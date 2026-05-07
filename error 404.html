@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>Load Failed</title>
+  <style>
+    :root {
+      --primary: #10b981; 
+      --bg-base: #020617; 
+      --card-bg: rgba(15, 23, 42, 0.9); 
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+      background: var(--bg-base) url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .overlay {
+      background: radial-gradient(circle at center, rgba(2, 6, 23, 0.6) 0%, rgba(2, 6, 23, 0.98) 100%);
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: var(--card-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      padding: 60px 40px; 
+      width: 100%;
+      max-width: 400px;
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700; /* Bold white text */
+      margin: 0 0 15px 0;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    /* Long Bubble Button */
+    .btn-dashboard {
+      display: block;
+      padding: 18px 30px;
+      border-radius: 100px; 
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .btn-dashboard:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(16, 185, 129, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+<div class="overlay">
+  <div class="container">
+    <h2>Page couldn't load</h2>
+    <p>Something went wrong while trying to reach this destinatio,please try again.</p>
+    
+    <a href="https://github.io" class="btn-dashboard">try again</a>
+  </div>
+</div>
+
+</body>
+</html>
